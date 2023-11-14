@@ -14,7 +14,7 @@ router
     try {
       if (!req.body.title || !req.body.author || !req.body.publishYear) {
         return res.status(400).send({
-          message: `send all required fields`
+          message: `send all required fields`,
         });
       }
       const newBook = {
@@ -49,24 +49,35 @@ router.get("/books/:id", async (req, res) => {
 
 router.put("/books/:id", async (req, res) => {
   try {
-    if(!req.body.title || !req.body.author||!req.body.publishYear)
-    {
+    if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
-        message: `send all required fields`})
+        message: `send all required fields`,
+      });
     }
 
     const id = req.params.id;
-    const result = await Book.findByIdAndUpdate(id,req.body);
-    if(!result){
-      return res.status(404).json({message :'book not found'})
+    const result = await Book.findByIdAndUpdate(id, req.body);
+    if (!result) {
+      return res.status(404).json({ message: "book not found" });
     }
-    return res.status(200).send({message:'book updated successfully'});
-
-    }
-   catch (error) {
+    return res.status(200).send({ message: "book updated successfully" });
+  } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
-  }}
-);
+  }
+});
+router.delete("/books/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await Book.findByIdAndDelete(id);
+    if (!result) {
+      return res.status(404).json({ message: "book not found" });
+    }
+    return res.status(200).send({ message: "book Deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
 
 export default router;
