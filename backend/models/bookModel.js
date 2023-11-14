@@ -5,6 +5,6 @@ const bookSchema = mongoose.Schema({
     author: { type: String, required: true },
     publishYear: { type: Number, required: true},
     
-})
+},{timestamps:true})
 
 export const Book= mongoose.model('book',bookSchema)
