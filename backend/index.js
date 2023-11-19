@@ -10,7 +10,7 @@ const bookRouter = router;
 const app=express();
 app.use(cors());
 app.use(express.json())
- mongoose.connect('mongodb+srv://gr4ce001:killisai2005@cluster0.wqmguzz.mongodb.net/MERN-BOOK_STORE').then(()=>{console.log(`mongoDB connected`)}).catch((err)=>{console.log(err)})
+ mongoose.connect('').then(()=>{console.log(`mongoDB connected`)}).catch((err)=>{console.log(err)})
 
 app.use('/',bookRouter)
 
