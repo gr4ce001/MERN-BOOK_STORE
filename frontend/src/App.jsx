@@ -5,13 +5,14 @@ import Editbook from './pages/Editbook.jsx'
 import Deletebook from './pages/Deletebook.jsx'
 import ShowBook from './pages/ShowBook.jsx'
 import Createbook from './pages/Createbook.jsx'
-import Navbar from './components/Navbar.jsx'
+import Navbar from './components/NavbarCom.jsx'
+import NavbarCom from './components/NavbarCom.jsx'
 
 
 const App = () => {
   return (
     <>
-    <Navbar/>
+    <NavbarCom/>
     <Routes>
       <Route exact path='/' element={<Home/>}/>
       <Route exact path='/books/create' element={<Createbook/>}/>
